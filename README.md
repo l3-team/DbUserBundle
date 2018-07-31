@@ -108,7 +108,7 @@ security:
                         roles: ROLE_ANON
         database:
             entity:
-                class: AppBundle:User
+                class: L3DbUserBundle:User
                 property: uid
 ```
 
