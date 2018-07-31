@@ -6,13 +6,13 @@ Allow authorize many ROLES (Symfony ROLES) from UID (returned by CasBundle) for 
 
 Installation of the Bundle
 ---
-Simple add this line in the require in your composer.json :
+* Simple add this line in the require in your composer.json :
 ```
 "l3/db-user-bundle": "~1.0"
 ```
 Launch the command **composer update** to install the package.
 
-For Symfony 2 and 3 : add the Bundle in the AppKernel.php file.
+* For Symfony 2 and 3 : add the Bundle in the AppKernel.php file.
 ```
 <?php
 // app/AppKernel.php
@@ -35,7 +35,7 @@ class AppKernel extends Kernel
 }
 ```
 
-For Symfony 4 :
+* For Symfony 4 :
 Verify if the line are present in config/bundles.php file (if not present, just add the line) :
 ```
 # config/bundles.php
@@ -44,7 +44,7 @@ L3\Bundle\DbUserBundle\L3DbUserBundle::class => ['all' => true],
 ...
 ```
 
-Next, configure the database connection in parameters.yml (fills the variables named prefixed by database*) :
+* Next, configure the database connection in parameters.yml (fills the variables named prefixed by database*) :
 ```
 # app/config/parameters.yml
 parameters:
@@ -56,12 +56,12 @@ parameters:
     database_password: null
 ```
 
-And create the 3 tables (x_user, x_role and x_user_role) with this command :
-For Symfony 2 :
+* And create the 3 tables (x_user, x_role and x_user_role) with this command :
+- For Symfony 2 :
 ```
 php app/console doctrine:schema:update --force
 ```
-For Symfony 3 and 4 :
+- For Symfony 3 and 4 :
 ```
 php bin/console doctrine:schema:update --force
 ```
@@ -69,7 +69,7 @@ php bin/console doctrine:schema:update --force
 Configuration of the bundle
 ---
 
-For Symfony 2 and 3 : in the firewall of your application, use the Bundle :
+* For Symfony 2 and 3 : in the firewall of your application, use the Bundle :
 ```
 # app/config/security.yml
 security:
@@ -80,7 +80,7 @@ security:
                 property: uid
 ```
 
-For Symfony 4 : in the firewall of your application, use the Bundle :
+* For Symfony 4 : in the firewall of your application, use the Bundle :
 ```
 # config/packages/security.yaml
 security:
