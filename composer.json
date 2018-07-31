@@ -1,0 +1,21 @@
+{
+    "name": "l3/db-user-bundle",
+    "type": "symfony-bundle",
+    "description": "Database User Provider for CasBundle (authorize many ROLES from UID)",
+    "homepage": "https://github.com/l3-team/DbUserBundle",
+    "license": "LGPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Mathieu Hétru",
+            "email": "mathieu.hetru@univ-lille.fr"
+        }
+    ],
+    "require": {
+        "php": ">=5.4"
+    },
+    "autoload": {
+        "psr-4": { "L3\\Bundle\\DbUserBundle\\": "" }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
