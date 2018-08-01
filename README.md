@@ -44,7 +44,8 @@ L3\Bundle\DbUserBundle\L3DbUserBundle::class => ['all' => true],
 ...
 ```
 
-* Next, configure the database connection in parameters.yml (fills the variables named prefixed by database*) :
+* Next, configure the database connection :
+- For Symfony 2 and Symfony 3, in parameters.yml (fills the variables named prefixed by database*) :
 ```
 # app/config/parameters.yml
 parameters:
@@ -55,20 +56,20 @@ parameters:
     database_user: root
     database_password: null
 ```
-
+- For Symfony 4, adapt the variable name DATABASE_URL in .env :
+```
+...
+DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
+...
+```
 * And create the 3 tables (x_user, x_role and x_user_role) with this command(s) :
 - For Symfony 2 :
 ```
 php app/console doctrine:schema:update --force
 ```
-- For Symfony 3 :
+- For Symfony 3 and Symfony 4 :
 ```
 php bin/console doctrine:schema:update --force
-```
-- For Symfony 4 :
-```
-php bin/console doctrine:migrations:diff
-php bin/console doctrine:migrations:migrate
 ```
 
 Configuration of the bundle
@@ -116,7 +117,41 @@ security:
                 class: L3DbUserBundle:User
                 property: uid
 ```
+In Symfony4, if you use chain_provider, you should set provider name on all entry (ie l3_firewall and main) firewall (where security is active : **security: true**) in config/packages/security.yaml like this :
+```
+# config/packages/security.yaml
+security:
+    providers:
+        chain_provider:
+            chain:
+                providers: [in_memory, your_userbundle]
+        in_memory:
+            memory:
+                users:
+                    __NO_USER__:
+                        password:
+                        roles: ROLE_ANON
+        your_userbundle:
+            id: your_userbundle
 
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        l3_firewall:
+            pattern: ^/
+            security: true
+            cas: true # Activation du CAS
+            provider: chain_provider
+
+        main:
+            pattern: ^/
+            security: true
+            cas: true # Activation du CAS
+            anonymous: true
+            provider: chain_provider
+```
 
 How to use
 ---
