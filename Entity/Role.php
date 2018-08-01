@@ -3,13 +3,12 @@
 namespace L3\Bundle\DbUserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\Role\RoleInterface;
 
 /**
  * @ORM\Table(name="x_role")
  * @ORM\Entity(repositoryClass="L3\Bundle\DbUserBundle\Repository\RoleRepository")
  */
-class Role implements RoleInterface/* , \Serializable */ {
+class Role extends \Symfony\Component\Security\Core\Role/* , \Serializable */ {
 
     /**
      * @ORM\Id
