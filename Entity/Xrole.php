@@ -3,7 +3,7 @@
 namespace L3\Bundle\DbUserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\Role;
+use Symfony\Component\Security\Core\Role\Role;
 
 /**
  * @ORM\Table(name="x_role")
