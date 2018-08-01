@@ -27,7 +27,7 @@ class User implements UserInterface, \Serializable {
     private $uid;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Role", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Xrole", cascade={"persist"})
      * @ORM\JoinTable(name="x_user_role",
      *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
      *     inverseJoinColumns={@ORM\JoinColumn(name="role_id", referencedColumnName="id")}

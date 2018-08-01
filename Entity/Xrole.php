@@ -9,7 +9,7 @@ use Symfony\Component\Security\Core\Role\Role;
  * @ORM\Table(name="x_role")
  * @ORM\Entity(repositoryClass="L3\Bundle\DbUserBundle\Repository\RoleRepository")
  */
-class Role extends \Symfony\Component\Security\Core\Role\Role {
+class Xrole extends Role {
 
     /**
      * @ORM\Id
