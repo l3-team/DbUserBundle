@@ -44,7 +44,8 @@ L3\Bundle\DbUserBundle\L3DbUserBundle::class => ['all' => true],
 ...
 ```
 
-* Next, configure the database connection in parameters.yml (fills the variables named prefixed by database*) :
+* Next, configure the database connection :
+- For Symfony 2 and Symfony 3, in parameters.yml (fills the variables named prefixed by database*) :
 ```
 # app/config/parameters.yml
 parameters:
@@ -55,20 +56,20 @@ parameters:
     database_user: root
     database_password: null
 ```
-
+- For Symfony 4, adapt the variable name DATABASE_URL in .env :
+```
+...
+DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
+...
+```
 * And create the 3 tables (x_user, x_role and x_user_role) with this command(s) :
 - For Symfony 2 :
 ```
 php app/console doctrine:schema:update --force
 ```
-- For Symfony 3 :
+- For Symfony 3 and Symfony 4 :
 ```
 php bin/console doctrine:schema:update --force
-```
-- For Symfony 4 :
-```
-php bin/console doctrine:migrations:diff
-php bin/console doctrine:migrations:migrate
 ```
 
 Configuration of the bundle
