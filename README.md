@@ -56,14 +56,19 @@ parameters:
     database_password: null
 ```
 
-* And create the 3 tables (x_user, x_role and x_user_role) with this command :
+* And create the 3 tables (x_user, x_role and x_user_role) with this command(s) :
 - For Symfony 2 :
 ```
 php app/console doctrine:schema:update --force
 ```
-- For Symfony 3 and 4 :
+- For Symfony 3 :
 ```
 php bin/console doctrine:schema:update --force
+```
+- For Symfony 4 :
+```
+php bin/console doctrine:migrations:diff
+php bin/console doctrine:migrations:migrate
 ```
 
 Configuration of the bundle
