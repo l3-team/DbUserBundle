@@ -11,7 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table(name="x_user")
  * @ORM\Entity(repositoryClass="L3\Bundle\DbUserBundle\Repository\UserRepository")
  */
-class Xuser implements UserInterface, \Serializable {
+class User implements UserInterface, \Serializable {
 
     /**
      * @var integer $id
@@ -27,7 +27,7 @@ class Xuser implements UserInterface, \Serializable {
     private $uid;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Xrole", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="Role", cascade={"persist"})
      * @ORM\JoinTable(name="x_user_role",
      *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
      *     inverseJoinColumns={@ORM\JoinColumn(name="role_id", referencedColumnName="id")}
