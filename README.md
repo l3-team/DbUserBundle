@@ -35,7 +35,7 @@ class AppKernel extends Kernel
 }
 ```
 
-* For Symfony 4 :
+* For Symfony 4 and 5 :
 Verify if the line are present in config/bundles.php file (if not present, just add the line) :
 ```
 # config/bundles.php
@@ -86,7 +86,7 @@ security:
                 property: uid
 ```
 
-* For Symfony 4 : in the firewall of your application, use the Bundle :
+* For Symfony 4 and 5 : in the firewall of your application, use the Bundle :
 ```
 # config/packages/security.yaml
 security:
