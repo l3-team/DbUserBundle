@@ -56,7 +56,7 @@ parameters:
     database_user: root
     database_password: null
 ```
-- For Symfony 4, adapt the variable name DATABASE_URL in .env.local :
+- For Symfony 4 and 5, adapt the variable name DATABASE_URL in .env.local :
 ```
 ...
 DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
