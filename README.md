@@ -6,9 +6,9 @@ Allow authorize many ROLES (Symfony ROLES) from UID (returned by CasBundle) for 
 
 Installation of the Bundle
 ---
-* Simple add this line in the require in your composer.json :
+* Install the Bundle with this command :
 ```
-"l3/db-user-bundle": "~1.0"
+composer require l3/db-user-bundle:~1.0
 ```
 Launch the command **composer update** to install the package.
 
