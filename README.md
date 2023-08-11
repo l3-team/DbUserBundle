@@ -1,14 +1,14 @@
 Database Provider for CAS
 
-Allow authorize many ROLES (Symfony ROLES) from UID (returned by CasBundle) for application Symfony2, Symfony3 and Symfony4
+Allow authorize many ROLES (Symfony ROLES) from UID (returned by CasBundle) for application Symfony2, Symfony3 and Symfony4 and Symfony5
 * UID is the id user returned by jasig cas sso server and by the l3-team/CasBundle (repository github) or l3/cas-bundle (repository packagist)
 * ROLES are Symfony ROLES prefixed by ROLE_, example ROLE_ADMIN, ROLE_USER, etc...
 
 Installation of the Bundle
 ---
-* Simple add this line in the require in your composer.json :
+* Install the Bundle with this command :
 ```
-"l3/db-user-bundle": "~1.0"
+composer require l3/db-user-bundle:~1.0
 ```
 Launch the command **composer update** to install the package.
 
@@ -35,7 +35,7 @@ class AppKernel extends Kernel
 }
 ```
 
-* For Symfony 4 :
+* For Symfony 4 and 5 :
 Verify if the line are present in config/bundles.php file (if not present, just add the line) :
 ```
 # config/bundles.php
@@ -56,7 +56,7 @@ parameters:
     database_user: root
     database_password: null
 ```
-- For Symfony 4, adapt the variable name DATABASE_URL in .env :
+- For Symfony 4 and 5, adapt the variable name DATABASE_URL in .env.local :
 ```
 ...
 DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
@@ -86,7 +86,7 @@ security:
                 property: uid
 ```
 
-* For Symfony 4 : in the firewall of your application, use the Bundle :
+* For Symfony 4 and 5 : in the firewall of your application, use the Bundle :
 ```
 # config/packages/security.yaml
 security:
