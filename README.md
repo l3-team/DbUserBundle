@@ -1,6 +1,6 @@
 Database Provider for CAS
 
-Allow authorize many ROLES (Symfony ROLES) from UID (returned by CasBundle) for application Symfony2, Symfony3 and Symfony4 and Symfony5
+Allow authorize many ROLES (Symfony ROLES) from UID (returned by CasBundle) for application Symfony2, Symfony3 and Symfony4 and Symfony5 and Symfony6
 * UID is the id user returned by jasig cas sso server and by the l3-team/CasBundle (repository github) or l3/cas-bundle (repository packagist)
 * ROLES are Symfony ROLES prefixed by ROLE_, example ROLE_ADMIN, ROLE_USER, etc...
 
@@ -35,7 +35,7 @@ class AppKernel extends Kernel
 }
 ```
 
-* For Symfony 4 and 5 :
+* For Symfony 4 and 5 and 6 :
 Verify if the line are present in config/bundles.php file (if not present, just add the line) :
 ```
 # config/bundles.php
@@ -86,7 +86,7 @@ security:
                 property: uid
 ```
 
-* For Symfony 4 and 5 : in the firewall of your application, use the Bundle :
+* For Symfony 4 and 5 and 6 : in the firewall of your application, use the Bundle :
 ```
 # config/packages/security.yaml
 security:
