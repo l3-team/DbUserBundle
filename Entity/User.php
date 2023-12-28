@@ -104,7 +104,7 @@ class User implements UserInterface, \Serializable {
         //pas d'implémentation nécessaire
     }
 
-    public function getRoles() {
+    public function getRoles(): array {
         $roles = array();
 
         foreach ($this->roles as $role) {
@@ -122,7 +122,7 @@ class User implements UserInterface, \Serializable {
         //pas d'implémentation nécessaire
     }
  
-    public function getUsername() {
+    public function getUserIdentifier(): string {
         return $this->getUid();
     }
 
