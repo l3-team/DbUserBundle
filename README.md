@@ -1,6 +1,6 @@
 Database Provider for CAS
 
-Allow authorize many ROLES (Symfony ROLES) from UID (returned by CasBundle) for application Symfony2, Symfony3 and Symfony4 and Symfony5 and Symfony6
+Allow authorize many ROLES (Symfony ROLES) from UID (returned by CasBundle) for application Symfony2, Symfony3 and Symfony4 and Symfony5 and Symfony6 and Symfony7
 * UID is the id user returned by jasig cas sso server and by the l3-team/CasBundle (repository github) or l3/cas-bundle (repository packagist)
 * ROLES are Symfony ROLES prefixed by ROLE_, example ROLE_ADMIN, ROLE_USER, etc...
 
@@ -35,7 +35,7 @@ class AppKernel extends Kernel
 }
 ```
 
-* For Symfony 4 and 5 and 6 :
+* For Symfony 4 and 5 and 6 and 7:
 Verify if the line are present in config/bundles.php file (if not present, just add the line) :
 ```
 # config/bundles.php
@@ -56,7 +56,7 @@ parameters:
     database_user: root
     database_password: null
 ```
-- For Symfony 4 and 5, adapt the variable name DATABASE_URL in .env.local :
+- For Symfony 4 and 5 and 6 and 7, adapt the variable name DATABASE_URL in .env.local :
 ```
 ...
 DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
@@ -67,7 +67,7 @@ DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
 ```
 php app/console doctrine:schema:update --force
 ```
-- For Symfony 3 and Symfony 4 :
+- For Symfony 3 and Symfony 4 and Symfony 5 and Symfony 6 and Symfony 7 :
 ```
 php bin/console doctrine:schema:update --force
 ```

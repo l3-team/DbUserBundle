@@ -96,7 +96,7 @@ class User implements UserInterface, \Serializable {
           ) = unserialize($serialize);
     }
 
-    public function eraseCredentials() {
+    public function eraseCredentials(): void {
         //pas d'implémentation nécessaire
     }
 
