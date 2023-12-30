@@ -10,11 +10,11 @@ use Doctrine\ORM\EntityRepository;
 
 class UserRepository extends EntityRepository implements UserProviderInterface {
 
-    public function loadUserByUsername($username)
+    public function loadUserByIdentifier($identifier): UserInterface
     {
         return $this->createQueryBuilder('u')
             ->where('u.uid = :username')
-            ->setParameter('username', $username)
+            ->setParameter('username', $identifier)
             ->getQuery()
             ->getOneOrNullResult();
     }
