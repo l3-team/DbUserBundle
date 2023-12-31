@@ -10,16 +10,17 @@ use Doctrine\ORM\EntityRepository;
 
 class UserRepository extends EntityRepository implements UserProviderInterface {
 
-    public function loadUserByUsername($username)
+    public function loadUserByIdentifier(string $identifier): UserInterface
     {
-        return $this->createQueryBuilder('u')
+        $entityManager = $this->getEntityManager();
+        return $entityManager->createQueryBuilder('u')
             ->where('u.uid = :username')
-            ->setParameter('username', $username)
+            ->setParameter('username', $identifier)
             ->getQuery()
             ->getOneOrNullResult();
     }
 
-    public function refreshUser(UserInterface $user)
+    public function refreshUser(UserInterface $user): UserInterface
     {
         $class = get_class($user);
         if (!$this->supportsClass($class)) {
@@ -34,7 +35,7 @@ class UserRepository extends EntityRepository implements UserProviderInterface {
         return $this->find($user->getId());
     }
 
-    public function supportsClass($class)
+    public function supportsClass(string $class): bool
     {
         return $this->getEntityName() === $class
             || is_subclass_of($class, $this->getEntityName());

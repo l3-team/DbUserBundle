@@ -5,26 +5,16 @@ namespace L3\Bundle\DbUserBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\Role\Role;
 
-/**
- * @ORM\Table(name="x_role")
- * @ORM\Entity(repositoryClass="L3\Bundle\DbUserBundle\Repository\RoleRepository")
- */
+#[ORM\Table(name:"x_role")]
+#[ORM\Entity(repositoryClass:"L3\Bundle\DbUserBundle\Repository\RoleRepository")]
 class Xrole extends Role {
 
-    /**
-     * @ORM\Id
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     *
-     * @var integer $id
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue(strategy:"AUTO")]
+    #[ORM\Column(name:"id", type:"integer")]
     private $id;
 
-    /**
-     * @ORM\Column(name="role", type="string", length=255)
-     *
-     * @var string $role
-     */
+    #[ORM\Column(name:"role", type:"string", length:255)]
     private $role;
 
 
