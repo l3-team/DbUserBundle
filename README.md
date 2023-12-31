@@ -1,7 +1,7 @@
 Database Provider for CAS
 
-Allow authorize many ROLES (Symfony ROLES) from UID (returned by CasBundle) for application Symfony2, Symfony3 and Symfony4 and Symfony5 and Symfony6 and Symfony7
-* UID is the id user returned by jasig cas sso server and by the l3-team/CasBundle (repository github) or l3/cas-bundle (repository packagist)
+Allow authorize many ROLES (Symfony ROLES) from UID (returned by CasBundle or CasGuardBundle) for application Symfony2, Symfony3 and Symfony4 and Symfony5 and Symfony6 and Symfony7
+* UID is the id user returned by jasig cas sso server and by the l3-team/CasBundle or l3-team/CasGuardBundle (repository github) or l3/cas-bundle or l3/cas-guard-bundle (repository packagist)
 * ROLES are Symfony ROLES prefixed by ROLE_, example ROLE_ADMIN, ROLE_USER, etc...
 
 Installation of the Bundle
@@ -35,7 +35,7 @@ class AppKernel extends Kernel
 }
 ```
 
-* For Symfony 4 and 5 and 6 and 7:
+* For Symfony 4 and 5 and 6 and 7 :
 Verify if the line are present in config/bundles.php file (if not present, just add the line) :
 ```
 # config/bundles.php
@@ -86,7 +86,7 @@ security:
                 property: uid
 ```
 
-* For Symfony 4 and 5 and 6 : in the firewall of your application, use the Bundle :
+* For Symfony 4 and 5 : in the firewall of your application, use the Bundle :
 ```
 # config/packages/security.yaml
 security:
@@ -96,6 +96,18 @@ security:
                 class: L3DbUserBundle:User
                 property: uid
 ```
+
+* For Symfony 6 and 7 : in the firewall of your application, use the Bundle :
+```
+# config/packages/security.yaml
+security:
+    providers:
+        database:
+            entity:
+                class: L3\Bundle\DbUserBundle\Entity\User
+                property: uid
+```
+
 
 Anonymous mode
 ---
@@ -117,6 +129,29 @@ security:
                 class: L3DbUserBundle:User
                 property: uid
 ```
+
+For Symfony 6 and Symfony 7 :
+
+
+```
+security:
+    providers:
+        chain_provider:
+            chain:
+                providers: [in_memory, database]
+        in_memory:
+            memory:
+                users:
+                    __NO_USER__:
+                        password:
+                        roles: ROLE_ANON
+        database:
+            entity:
+                class: L3\Bundle\DbUserBundle\Entity\User
+                property: uid
+```
+
+
 In Symfony4, if you use chain_provider, you should set provider name on all entry (ie l3_firewall and main) firewall (where security is active : **security: true**) in config/packages/security.yaml like this :
 ```
 # config/packages/security.yaml
@@ -156,6 +191,6 @@ security:
 How to use
 ---
 3 tables x_user, x_role and x_user_role have been created with the doctrine command schema update.
-* table x_user contains the UID used with CasBundle
+* table x_user contains the UID used with CasBundle or CasGuardBundle
 * table x_role contains all the ROLES Symfony
 * table x_user_role contains the map of all ROLES of all UID
